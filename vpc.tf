@@ -13,7 +13,7 @@ module "vpc" {
 }
 
 
-module "security_group" {
+module "security_group_mysql" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "4.9.0"
 
