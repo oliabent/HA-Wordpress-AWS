@@ -19,7 +19,7 @@ module "db" {
   multi_az               = true
   create_db_subnet_group = true
   subnet_ids             = module.vpc.private_subnets
-  vpc_security_group_ids = [module.security_group.security_group_id]
+  vpc_security_group_ids = [module.security_group_mysql.security_group_id]
 
   backup_retention_period = 3
   skip_final_snapshot     = true

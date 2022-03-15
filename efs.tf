@@ -5,7 +5,5 @@ module "efs" {
   region                     = var.region
   vpc_id                     = module.vpc.vpc_id
   subnets                    = module.vpc.private_subnets
-  allowed_security_group_ids = [module.vpc.default_security_group_id]
+  allowed_security_group_ids = [module.security_group_instances.security_group_id]
 }
-
-
