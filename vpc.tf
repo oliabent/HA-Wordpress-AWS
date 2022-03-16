@@ -28,6 +28,7 @@ module "security_group_mysql" {
       cidr_blocks = module.vpc.vpc_cidr_block
     },
   ]
+  egress_rules = ["all-all"]
 }
 
 module "security_group_lb" {

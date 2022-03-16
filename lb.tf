@@ -39,9 +39,19 @@ module "alb" {
   ]
 }
 
+resource "time_sleep" "wait_60_seconds" {
+  depends_on = [
+    module.asg
+  ]
+  create_duration = "60s"
+}
+
+
 data "aws_instances" "asg" {
   filter {
-    name = "instance.group-id"
+    name   = "instance.group-id"
     values = [module.security_group_instances.security_group_id]
   }
+
+  depends_on = [time_sleep.wait_60_seconds]
 }
