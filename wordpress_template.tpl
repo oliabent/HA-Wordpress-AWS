@@ -37,6 +37,7 @@ echo "\$table_prefix = 'wp_';" >> wp-config.php
 echo "define( 'WP_DEBUG', true );" >> wp-config.php
 echo "define( 'WP_DEBUG_LOG', true );" >> wp-config.php
 echo "define( 'SAVEQUERIES', true );" >> wp-config.php
+echo "if ($_SERVER['HTTP_X_FORWARDED_PROTO']== 'https') $_SERVER['HTTPS']='on';" >> wp-config.php
 echo "if ( ! defined( 'ABSPATH' ) ) {" >> wp-config.php
 echo "    define( 'ABSPATH', __DIR__ . '/' );" >> wp-config.php
 echo "}" >> wp-config.php

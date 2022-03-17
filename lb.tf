@@ -13,6 +13,7 @@ module "alb" {
       protocol           = "HTTP"
       target_group_index = 0
     }
+    ####### TODO: HTTPS listener, HTTP listener which redirect trafic to HTTPS
   ]
 
   target_groups = [
@@ -40,12 +41,9 @@ module "alb" {
 }
 
 resource "time_sleep" "wait_60_seconds" {
-  depends_on = [
-    module.asg
-  ]
+  depends_on      = [module.asg]
   create_duration = "60s"
 }
-
 
 data "aws_instances" "asg" {
   filter {
