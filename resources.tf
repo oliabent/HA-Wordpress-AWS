@@ -35,7 +35,7 @@ module "asg" {
   max_size                  = 2
   wait_for_capacity_timeout = 0
   health_check_type         = "EC2"
-  create_scaling_policy     = false
+  create_scaling_policy     = true
   scaling_policies = {
     avg-cpu-policy-greater-than-80 = {
       policy_type               = "TargetTrackingScaling"
