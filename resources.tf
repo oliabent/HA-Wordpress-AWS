@@ -36,7 +36,17 @@ module "asg" {
   wait_for_capacity_timeout = 0
   health_check_type         = "EC2"
   create_scaling_policy     = false
-
+  scaling_policies = {
+    avg-cpu-policy-greater-than-80 = {
+      policy_type               = "TargetTrackingScaling"
+      target_tracking_configuration = {
+        predefined_metric_specification = {
+          predefined_metric_type = "ASGAverageCPUUtilization"
+        }
+        target_value = 80.0
+      }
+    }
+  }
   image_id         = "ami-0db188056a6ff81ae"
   instance_type    = "t2.micro"
   key_name         = local.keys
